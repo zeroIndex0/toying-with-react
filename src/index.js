@@ -118,7 +118,7 @@ class Game extends Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xisNext: (step % 2) === 0,
+      xisNext: (step % 2) === 1,
     });
   }
 
@@ -141,10 +141,7 @@ class Game extends Component {
     let player = this.currentPlayer();
     let status;
     if(winner) {
-      status = `Winner: ${winner}`;
-      // <Board 
-      //   winner={winner}
-      // />
+      status = `Winner: ${current.squares[winner[0]]}`;
     } else {
       status = `Next player: ${player}`;
     }
@@ -195,8 +192,3 @@ function calculateWinner(squares) {
   }
   return null;
 }
-
-//to highlight the winning squares i would need to figure out which are the winning ones anc pass thouse
-//value into the squares and change the css class to a highlighted sections.  how would i change the square
-//of a previously set grid section
-//or should i say button.
