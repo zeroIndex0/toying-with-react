@@ -5,24 +5,47 @@ import './index.css';
 
 // Making Square a function component since it has no state
 function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
+  if(!props.winner) {
+    return (
+      <button className="square" onClick={props.onClick}>
+        {props.value}
+      </button>
+    );
+  } else {
+    return (
+      <button className="winning-square" onClick={props.onClick}>
+        {props.value}
+      </button>
+    );
+  }
 }
 
 
 class Board extends Component {
 
   renderSquare(i) {
-    return ( 
-      <Square 
+      //here is where i need to check if there is a winner and fi its matching
+      //ahve to handle the null case
+    // if(this.props.winner[0] === i || this.props.winner[1] === i || this.props.winner[2] === i) {
+    if(this.props.winner !== null && (this.props.winner[0] === i || this.props.winner[1] === i || this.props.winner[2] === i)) {
+      return (
+        <Square 
         value={this.props.squares[i]} 
         onClick={() => this.props.onClick(i)}
-      />
-    );
+        winner={true}
+        /> 
+      );
+    } else {
+      return (
+        <Square 
+          value={this.props.squares[i]} 
+          onClick={() => this.props.onClick(i)}
+          winner={false}
+        />
+      );
+    }
   }
+
 
   render() {
 
@@ -119,6 +142,9 @@ class Game extends Component {
     let status;
     if(winner) {
       status = `Winner: ${winner}`;
+      // <Board 
+      //   winner={winner}
+      // />
     } else {
       status = `Next player: ${player}`;
     }
@@ -129,6 +155,7 @@ class Game extends Component {
           <Board 
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
+            winner={winner}
           />
         </div>
         <div className="game-info">
@@ -163,8 +190,13 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return lines[i];
     }
   }
   return null;
 }
+
+//to highlight the winning squares i would need to figure out which are the winning ones anc pass thouse
+//value into the squares and change the css class to a highlighted sections.  how would i change the square
+//of a previously set grid section
+//or should i say button.
