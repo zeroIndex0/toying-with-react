@@ -85,7 +85,7 @@ class Game extends Component {
 
 
   currentPlayer() {
-    return this.state.xisNext ? 'X' : 'O';
+    return this.state.xIsNext ? 'X' : 'O';
   }
 
   handleClick(i) {
@@ -111,14 +111,14 @@ class Game extends Component {
         squares: squares,
       }]),
       stepNumber: history.length,
-      xisNext: !this.state.xisNext,
+      xIsNext: !this.state.xIsNext,
     });
   }
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xisNext: (step % 2) === 1,
+      xIsNext: (step % 2) === 0,
     });
   }
 
