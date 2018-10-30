@@ -131,11 +131,19 @@ class Game extends Component {
       const desc = move ?
         'Go to move #' + move :
         'Go to game start';
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
+      if(move <= 4) {
+        return (
+            <li key={move}>
+              <button className="move-buttons-first" onClick={() => this.jumpTo(move)}>{desc}</button>
+            </li>
+          );
+      } else {
+          return (
+            <li key={move}>
+              <button className="move-buttons-last" onClick={() => this.jumpTo(move)}>{desc} else </button>
+            </li>
+        );
+      }
     });
 
     let player = this.currentPlayer();

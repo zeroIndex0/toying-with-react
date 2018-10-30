@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 .body {
   font: 14px "Centruy Gothic", Futura, sans-serif;
   margin: 20px;
@@ -5,6 +9,12 @@
 
 ol, ul {
   padding-left: 30px;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.board-row {
+  margin-left: 25vw;
 }
 
 .board-row:after {
@@ -13,42 +23,51 @@ ol, ul {
   display: table;
 }
 
-.status {
-  margin-bottom: 10px;
+.move-buttons-first {
+  display: grid;
 }
 
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
+.move-buttons-last {
+  clear: left;
+  display: grid;
+}
+
+.status {
+  margin-bottom: 10px;
 }
 
 .square:focus {
   outline: none;
 }
 
-.winning-square {
-  background: #999;
+.square {
+  background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: 10vw;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
+  height: 15vw;
+  /* margin-right: -1; */
+  /* margin-top: -1px; */
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 15vw;
+}
+
+.winning-square {
+  background: #999;
+  border: 1px solid black;
+  float: left;
+  font-size: 10vw;
+  font-weight: bold;
+  line-height: 34px;
+  height: 15vw;
+  /* margin-right: -1px; */
+  /* margin-top: -1px; */
+  padding: 0;
+  text-align: center;
+  width: 15vw;
 }
 
 .kbd-navigation .square:focus {
@@ -57,4 +76,5 @@ ol, ul {
 
 .game-info {
   margin-left: 20px;
+  text-align: center;
 }
