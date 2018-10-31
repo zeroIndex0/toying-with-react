@@ -131,25 +131,20 @@ class Game extends Component {
       const desc = move ?
         'Go to move #' + move :
         'Go to game start';
-      if(move <= 4) {
-        return (
-            <li key={move}>
-              <button className="move-buttons-first" onClick={() => this.jumpTo(move)}>{desc}</button>
-            </li>
-          );
-      } else {
-          return (
-            <li key={move}>
-              <button className="move-buttons-last" onClick={() => this.jumpTo(move)}>{desc} else </button>
-            </li>
+      return (
+          <li key={move}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          </li>
         );
-      }
     });
 
     let player = this.currentPlayer();
     let status;
+    console.log(this.state.stepNumber);
     if(winner) {
       status = `Winner: ${current.squares[winner[0]]}`;
+    } else if (this.state.stepNumber === 9) {
+      status = "The Game Is A Draw";
     } else {
       status = `Next player: ${player}`;
     }
@@ -157,6 +152,7 @@ class Game extends Component {
     return (
       <div className="game">
         <div className="game-board">
+          Tic Tac Toe
           <Board 
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
