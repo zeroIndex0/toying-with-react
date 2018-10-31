@@ -7,14 +7,20 @@ html {
   margin: 20px;
 }
 
-ol, ul {
-  padding-left: 30px;
+ol {
+  list-style-type: none;
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+
+li {
   list-style-type: none;
   display: inline-block;
 }
 
 .board-row {
-  margin-left: 25vw;
+  margin-left: 30%;
 }
 
 .board-row:after {
@@ -23,21 +29,25 @@ ol, ul {
   display: table;
 }
 
-.move-buttons-first {
-  display: grid;
+.game-board {
+  padding-top: 1px;
+  text-align: center;
+  font-size: 2vw;
+  font-weight: bold;
 }
 
-.move-buttons-last {
-  clear: left;
-  display: grid;
+.game-info {
+  margin-top: 20px;
+  margin-left: 20px;
+  text-align: center;
 }
 
 .status {
   margin-bottom: 10px;
 }
 
-.square:focus {
-  outline: none;
+.square:hover {
+  background: cyan;
 }
 
 .square {
@@ -68,13 +78,4 @@ ol, ul {
   padding: 0;
   text-align: center;
   width: 15vw;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game-info {
-  margin-left: 20px;
-  text-align: center;
 }
